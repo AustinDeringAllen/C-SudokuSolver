@@ -7,7 +7,7 @@ namespace SudokuSolver
     {
         public static void Main(string[] args)
         {
-            int[,] board = new int[,] {
+            int[,] board = {
                 { 0, 0, 6, 0, 0, 5, 3, 0, 2 },
                 { 0, 0, 0, 0, 0, 4, 7, 0, 0 },
                 { 9, 0, 0, 3, 0, 0, 8, 6, 0 },
@@ -36,6 +36,33 @@ namespace SudokuSolver
             {
                 if (board[i, currentPosition[1]] == number)
                     return false;
+            }
+            return true;
+        }
+
+        public static bool CheckGrid(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
+        {
+            int[] newPosition = { currentPosition[0], currentPosition[1] };
+            for(int i=0; i<newPosition.Length; i++)
+            {
+                switch(newPosition[i] % 3)
+                {
+                    case 0:
+                        newPosition[i] += 1;
+                        break;
+                    case 2:
+                        newPosition[i] -= 1;
+                        break;
+                }
+            }
+
+            for(int i=newPosition[0]-1; i<=newPosition[0]+1; i++)
+            {
+                for(int j=newPosition[1]-1; j<=newPosition[1]+1; j++)
+                {
+                    if (board[i, j] == number)
+                        return false;
+                }
             }
             return true;
         }
