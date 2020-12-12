@@ -67,5 +67,19 @@ namespace SudokuSolver
             return true;
         }
 
+        public static bool IsValidMove(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
+        {
+            bool row, column, grid;
+
+            if (impossibleNumbers.Contains(number))
+                return false;
+
+            row = CheckRow(board, currentPosition, number, impossibleNumbers);
+            column = CheckColumn(board, currentPosition, number, impossibleNumbers);
+            grid = CheckGrid(board, currentPosition, number, impossibleNumbers);
+
+            return row && column && grid;
+        }
+
     }
 }
