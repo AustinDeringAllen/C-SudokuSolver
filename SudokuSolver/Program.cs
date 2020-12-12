@@ -22,6 +22,16 @@ namespace SudokuSolver
 
         public static bool CheckRow(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
         {
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (board[currentPosition[0], i] == number)
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool CheckColumn(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
+        {
             for(int i=0; i<board.Length; i++)
             {
                 if (board[i, currentPosition[1]] == number)
