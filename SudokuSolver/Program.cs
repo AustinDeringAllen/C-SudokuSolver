@@ -22,6 +22,16 @@ namespace SudokuSolver
             PrettifySudoku(board);
         }
 
+        public static int findValidMove(int[,] board, int[] currentPosition, List<int> impossibleNumbers)
+        {
+            for(int number=1; number<=board.Length; number++)
+            {
+                if (IsValidMove(board, currentPosition, number, impossibleNumbers))
+                    return number;
+            }
+            return -1;
+        }
+
         public static bool CheckRow(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
         {
             for (int i = 0; i < board.Length; i++)
