@@ -81,5 +81,19 @@ namespace SudokuSolver
             return row && column && grid;
         }
 
+        public static List<int[,]> findAllEmpty(int[,] board)
+        {
+            List<int[,]> emptyPositions = new List<int[,]>();
+            for(int i=0; i<board.Length; i++)
+            {
+                for(int j=0; j<board.Length; j++)
+                {
+                    if (board[i, j] == 0)
+                        emptyPositions.Add(new int[i, j]);
+                }
+            }
+            return emptyPositions;
+        }
+
     }
 }
