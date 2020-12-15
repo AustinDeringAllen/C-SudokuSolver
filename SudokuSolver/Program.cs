@@ -18,6 +18,8 @@ namespace SudokuSolver
                 { 0, 0, 1, 9, 0, 0, 0, 0, 0 },
                 { 3, 0, 9, 8, 0, 0, 2, 0, 0 },
             };
+
+            PrettifySudoku(board);
         }
 
         public static bool CheckRow(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
@@ -81,7 +83,7 @@ namespace SudokuSolver
             return row && column && grid;
         }
 
-        public static List<int[,]> findAllEmpty(int[,] board)
+        public static List<int[,]> FindAllEmpty(int[,] board)
         {
             List<int[,]> emptyPositions = new List<int[,]>();
             for(int i=0; i<board.Length; i++)
@@ -93,6 +95,23 @@ namespace SudokuSolver
                 }
             }
             return emptyPositions;
+        }
+
+
+        // Needs a little work
+        public static void PrettifySudoku(int[,] board)
+        {
+            Console.WriteLine("----------");
+            for(int i=0; i<board.GetLength(0); i++)
+            {
+                for(int j=0; j<board.GetLength(1); j++)
+                {
+                    if (i == board.GetLength(0) - 1)
+                        Console.WriteLine(board[i, j] + "\n");
+                    else
+                        Console.WriteLine(board[i, j]);
+                }
+            }
         }
 
     }
