@@ -130,9 +130,9 @@ namespace SudokuSolver
         public static List<int[]> FindAllEmpty(int[,] board)
         {
             List<int[]> emptyPositions = new List<int[]>();
-            for(int i=0; i<board.Length; i++)
+            for(int i=0; i<board.GetLength(0); i++)
             {
-                for(int j=0; j<board.Length; j++)
+                for(int j=0; j<board.GetLength(0); j++)
                 {
                     if (board[i, j] == 0)
                     {
