@@ -19,6 +19,7 @@ namespace SudokuSolver
                 { 3, 0, 9, 8, 0, 0, 2, 0, 0 },
             };
 
+            Solve(board);
             PrettifySudoku(board);
         }
 
@@ -148,14 +149,19 @@ namespace SudokuSolver
         public static void PrettifySudoku(int[,] board)
         {
             Console.WriteLine("----------");
-            for(int i=0; i<board.GetLength(0); i++)
+            Console.WriteLine(board.Length);
+            Console.WriteLine(board.GetLength(0));
+
+            Console.WriteLine("----------");
+
+            for(int row=0; row<board.GetLength(0); row++)
             {
-                for(int j=0; j<board.GetLength(1); j++)
+                for(int col=0; col<board.GetLength(0); col++)
                 {
-                    if (i == board.GetLength(0) - 1)
-                        Console.WriteLine(board[i, j] + "\n");
+                    if (col == board.GetLength(0) - 1)
+                        Console.Write(board[row, col] + "\n");
                     else
-                        Console.WriteLine(board[i, j]);
+                        Console.Write(board[row, col] + " , ");
                 }
             }
         }
