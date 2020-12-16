@@ -35,6 +35,23 @@ namespace SudokuSolver
             while(true)
             {
                 int[] currentPosition = allEmptyPositions[key];
+                int nextMove = findValidMove(board, currentPosition, impossibleNumbers[key]);
+
+                if(nextMove != -1)
+                {
+                    key++;
+                    board[currentPosition[0], currentPosition[1]] = nextMove;
+                } else
+                {
+                    impossibleNumbers[key].Clear();
+                    key--;
+                    int[] previousPosition = allEmptyPositions[key];
+                    impossibleNumbers[key].Add(board[previousPosition[0], previousPosition[1]]);
+                    board[previousPosition[0], previousPosition[1]] = 0;
+                }
+
+                if (key == allEmptyPositions.Count)
+                    break;
             }
         }
 
