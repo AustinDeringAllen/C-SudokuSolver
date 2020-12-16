@@ -58,7 +58,7 @@ namespace SudokuSolver
 
         public static int findValidMove(int[,] board, int[] currentPosition, List<int> impossibleNumbers)
         {
-            for(int number=1; number<=board.Length; number++)
+            for(int number=1; number<=board.GetLength(0); number++)
             {
                 if (IsValidMove(board, currentPosition, number, impossibleNumbers))
                     return number;
@@ -68,7 +68,7 @@ namespace SudokuSolver
 
         public static bool CheckRow(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
         {
-            for (int i = 0; i < board.Length; i++)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
                 if (board[currentPosition[0], i] == number)
                     return false;
@@ -78,7 +78,7 @@ namespace SudokuSolver
 
         public static bool CheckColumn(int[,] board, int[] currentPosition, int number, List<int> impossibleNumbers)
         {
-            for(int i=0; i<board.Length; i++)
+            for(int i=0; i<board.GetLength(0); i++)
             {
                 if (board[i, currentPosition[1]] == number)
                     return false;
