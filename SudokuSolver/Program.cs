@@ -22,6 +22,16 @@ namespace SudokuSolver
             PrettifySudoku(board);
         }
 
+        public static void solve(int[,] board)
+        {
+            List<int[,]> allEmptyPositions = FindAllEmpty(board);
+            Dictionary<int, List<int>> impossibleNumbers = new Dictionary<int, List<int>>();
+            for (int i = 0; i < allEmptyPositions.Count; i++)
+            {
+                impossibleNumbers.Add(i, new List<int>());
+            } 
+        }
+
         public static int findValidMove(int[,] board, int[] currentPosition, List<int> impossibleNumbers)
         {
             for(int number=1; number<=board.Length; number++)
