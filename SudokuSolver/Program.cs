@@ -22,14 +22,20 @@ namespace SudokuSolver
             PrettifySudoku(board);
         }
 
-        public static void solve(int[,] board)
+        public static void Solve(int[,] board)
         {
-            List<int[,]> allEmptyPositions = FindAllEmpty(board);
+            List<int[]> allEmptyPositions = FindAllEmpty(board);
             Dictionary<int, List<int>> impossibleNumbers = new Dictionary<int, List<int>>();
             for (int i = 0; i < allEmptyPositions.Count; i++)
             {
                 impossibleNumbers.Add(i, new List<int>());
-            } 
+            }
+
+            int key = 0;
+            while(true)
+            {
+                int[] currentPosition = allEmptyPositions[key];
+            }
         }
 
         public static int findValidMove(int[,] board, int[] currentPosition, List<int> impossibleNumbers)
@@ -103,15 +109,18 @@ namespace SudokuSolver
             return row && column && grid;
         }
 
-        public static List<int[,]> FindAllEmpty(int[,] board)
+        public static List<int[]> FindAllEmpty(int[,] board)
         {
-            List<int[,]> emptyPositions = new List<int[,]>();
+            List<int[]> emptyPositions = new List<int[]>();
             for(int i=0; i<board.Length; i++)
             {
                 for(int j=0; j<board.Length; j++)
                 {
                     if (board[i, j] == 0)
-                        emptyPositions.Add(new int[i, j]);
+                    {
+                        int[] newPosition = { i, j };
+                        emptyPositions.Add(newPosition);
+                    }
                 }
             }
             return emptyPositions;
